@@ -50,9 +50,10 @@ function App() {
     <div key={pro.id} className="card_1">
             <span className='span'><FaHeartBroken />  <IoCartOutline /></span>
             <img src={pro.images[0]} alt="" />
-            <h5>{pro.title}</h5>
+            <h5>{pro.description}</h5>
             <h3>{pro.price}$</h3>
-            <h4>iPhone 14 pro</h4>
+            <h4>{pro.title}</h4>
+            <button>Add mobile</button>
           </div>
   ))
 

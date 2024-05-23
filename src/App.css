@@ -83,7 +83,7 @@ form input {
 .card_1 h5 {
     margin-top: 15px;
     display: -webkit-box;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -92,9 +92,33 @@ form input {
     transition: .3s linear;
 }
 
+.card_1 h4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 .card_1 img:hover  {
     transform: scale(1.08);
 }
+
+.card_1 button {
+    border: none;
+    outline: none;
+    background: rgb(16, 15, 15);
+    color: white;
+    padding: 8px 55px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: .3s linear;
+}
+
+.card_1:hover button { 
+    opacity: 10;
+}
+
+
 
 
 @media(max-width: 1570px){
