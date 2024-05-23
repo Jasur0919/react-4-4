@@ -8,10 +8,18 @@ import Iphone from './assets/iphone-14 pro.jpg'
 import { IoCartOutline } from "react-icons/io5";
 import { FaHeartBroken } from "react-icons/fa";
 import axios from 'axios';
+import AnimatedCursor from "react-animated-cursor"
+import Aos from 'aos';
 
 const API_URL = "https://dummyjson.com/products"
 
 function App() {
+
+  useEffect(() => {
+    Aos.init({duration: 1000})
+  },[])
+
+  
   const [users, setUsers] = useState([])
   const [form, setForm] = useState({})
   const [search, setSearch] = useState("")
@@ -46,8 +54,10 @@ function App() {
   })
   
 
-  let cards  = data?.slice(0, 8)?.map((pro) => (
-    <div key={pro.id} className="card_1">
+  let cards  = data?.slice(0, 12)?.map((pro) => (
+    <div key={pro.id} className="card_1"   data-aos="flip-left"
+    data-aos-easing="ease-out-cubic"
+    data-aos-duration="2000">
             <span className='span'><FaHeartBroken />  <IoCartOutline /></span>
             <img src={pro.images[0]} alt="" />
             <h5>{pro.description}</h5>
@@ -59,9 +69,15 @@ function App() {
 
   return (
     <>
+
+<div className="App">
+      <AnimatedCursor  color='3, 22, 168'/>
+    </div>
+
       <div className="container">
         <div className="row mt-4">
-          <div className="col-md-3 form-first  logo">
+          <div className="col-md-3 form-first  logo" data-aos="fade-up"
+     data-aos-duration="3000">
             <h3 >Add user</h3>
            <div className="card-body">
            <form id='submit' onSubmit={handleSubmit}>

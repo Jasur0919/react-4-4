@@ -12,6 +12,10 @@
     position: absolute;
 } */
 
+body {
+    cursor: default !important;
+}
+
 .logo {
     border: 2px solid gray;
     width: 220px !important ;
@@ -52,6 +56,7 @@ form input {
     border-radius: 12px;
     background: white;
     width: 240px;
+    height: 400px;
     padding: 20px;
     overflow: hidden;
 }
@@ -78,6 +83,8 @@ form input {
 
 .card_1 h3 {
     color: rgb(108, 203, 200);
+    position: absolute;
+
 }
 
 .card_1 h5 {
@@ -97,6 +104,13 @@ form input {
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    margin-top: 60px;
+
+}
+
+.card_1:hover h4 {
+    /* margin-top: -20px; */
+    opacity: 0;
 }
 
 .card_1 img:hover  {
@@ -111,11 +125,17 @@ form input {
     padding: 8px 55px;
     border-radius: 5px;
     opacity: 0;
-    transition: .3s linear;
+    transition: .2s linear;
+    position: absolute;
+}
+
+.card_1 {
+    position: relative;
 }
 
 .card_1:hover button { 
     opacity: 10;
+    margin-top: -40px;
 }
 
 
