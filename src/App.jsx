@@ -1,14 +1,21 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { nanoid } from 'nanoid'
+import Iphone from './assets/iphone-14 pro.jpg'
+import { IoCartOutline } from "react-icons/io5";
+import { FaHeartBroken } from "react-icons/fa";
+import axios from 'axios';
+
+const API_URL = "https://dummyjson.com/products"
 
 function App() {
   const [users, setUsers] = useState([])
   const [form, setForm] = useState({})
   const [search, setSearch] = useState("")
+  const [data, setData] = useState([])
 
   const handleChange = (event) => {
     const {name, value} = event.target
@@ -31,11 +38,30 @@ function App() {
   }
 
 
+  useEffect(() => {
+    axios
+        .get(API_URL)
+        .then(res => setData(res.data.products))
+        .catch(err => console.log(err))
+  })
+  
+
+  let cards  = data?.slice(0, 8)?.map((pro) => (
+    <div key={pro.id} className="card_1">
+            <span className='span'><FaHeartBroken />  <IoCartOutline /></span>
+            <img src={pro.images[0]} alt="" />
+            <h5>{pro.title}</h5>
+            <h3>{pro.price}$</h3>
+            <h4>iPhone 14 pro</h4>
+          </div>
+  ))
+
   return (
     <>
       <div className="container">
         <div className="row mt-4">
-          <div className="col-md-3">
+          <div className="col-md-3 form-first  logo">
+            <h3 >Add user</h3>
            <div className="card-body">
            <form id='submit' onSubmit={handleSubmit}>
               <input required type="text" name='name' onChange={handleChange} placeholder='FirstName' className='from-control my-2'/>
@@ -56,9 +82,9 @@ function App() {
               </div>
             </div>
             <table className='table table-bordered table-hover table-striped'>
-              <thead>
+              <thead className=''>
                 <tr>
-                  <td>T/R</td>
+                  <td>T/R</td> 
                   <td>Name</td>
                   <td>Family</td>
                   <td>Age</td>
@@ -88,6 +114,22 @@ function App() {
               </tbody>
             </table>
           </div>
+
+
+        </div>
+
+        <h1 className='product'>Products</h1>
+
+        <div className="cards">
+                    {cards}
+          {/* <div className="card_1">
+            <span className='span'><FaHeartBroken />  <IoCartOutline /></span>
+            <img src={Iphone} alt="" />
+            <h5>Apple</h5>
+            <h3>Price 300$</h3>
+            <h4>iPhone 14 pro</h4>
+          </div> */}
+
         </div>
       </div>
     </>
